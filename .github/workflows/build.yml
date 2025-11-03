@@ -35,9 +35,9 @@ jobs:
         uses: ossia/actions/package-custom-app@master
         with:
           app-name: "My Custom App"
-          qml-files: "qml/Main.qml"
+          qml-files: "qml"
           # Optional: Add your score file here
-          # score-file: "scores/demo.score"
+          score-file: "score/app.score"
           release-tag: "continuous"
           platforms: "${{ matrix.platform }}"
 
