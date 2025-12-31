@@ -32,7 +32,15 @@ jobs:
         uses: actions/checkout@v4
 
       - name: ossia score build
+        id: score
         uses: ossia/actions/custom-score-build@master
+        with:
+          cmake-options: -DSCORE_ENABLE_ADDONS=score-addon-onnx -DSCORE_DISABLE_PLUGINS=score-plugin-faust,score-plugin-jit,score-plugin-vst,score-plugin-vst3,score-plugin-clap,score-plugin-lv2,score-plugin-avnd,score-plugin-pd,score-plugin-ysfx,score-plugin-packagemanager,score-plugin-controlsurface
+          macos-certificate-base64: ${{ secrets.MAC_CERT_B64 }}
+          macos-certificate-password: ${{ secrets.MAC_CERT_PASSWORD }}
+          macos-notarize-team-id: ${{ secrets.MAC_NOTARIZE_TEAM_ID }}
+          macos-notarize-apple-id: ${{ secrets.MAC_NOTARIZE_APPLE_ID }}
+          macos-notarize-password: ${{ secrets.MAC_NOTARIZE_PASSWORD }}
 
       - name: Package custom ossia score app
         uses: ossia/actions/package-custom-app@master
@@ -41,7 +49,7 @@ jobs:
           qml-files: "qml"
           # Optional: Add your score file here
           score-file: "score/app.score"
-          release-tag: "continuous"
+          score-build-id: ${{ steps.score.outputs.artifact-id }}
           platforms: "${{ matrix.platform }}"
           # Optional: macOS code signing (requires secrets to be set in repository)
           macos-certificate-base64: ${{ secrets.MAC_CERT_B64 }}
