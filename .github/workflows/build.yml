@@ -1,4 +1,4 @@
-name: Build Custom App
+name: Custom app
 
 on:
   push:
