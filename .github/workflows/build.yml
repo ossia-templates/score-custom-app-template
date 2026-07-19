@@ -26,6 +26,9 @@ jobs:
           - os: windows-latest
             platform: windows
             artifact-name: windows
+          - os: ubuntu-latest
+            platform: wasm
+            artifact-name: wasm
 
     steps:
       - name: Checkout repository
