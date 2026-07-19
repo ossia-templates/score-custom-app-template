@@ -35,7 +35,9 @@ jobs:
         id: score
         uses: ossia/actions/custom-score-build@master
         with:
-          cmake-options: -DSCORE_ENABLE_ADDONS=score-addon-onnx -DSCORE_DISABLE_PLUGINS=score-plugin-faust,score-plugin-jit,score-plugin-vst,score-plugin-vst3,score-plugin-clap,score-plugin-lv2,score-plugin-avnd,score-plugin-pd,score-plugin-ysfx,score-plugin-packagemanager,score-plugin-controlsurface
+          # NB: score-addon-onnx is an Avendish addon and includes <Avnd/Factories.hpp>
+          # (provided by score-plugin-avnd), so score-plugin-avnd must stay enabled.
+          cmake-options: -DSCORE_ENABLE_ADDONS=score-addon-onnx -DSCORE_DISABLE_PLUGINS=score-plugin-faust,score-plugin-jit,score-plugin-vst,score-plugin-vst3,score-plugin-clap,score-plugin-lv2,score-plugin-pd,score-plugin-ysfx,score-plugin-packagemanager,score-plugin-controlsurface
           macos-certificate-base64: ${{ secrets.MAC_CERT_B64 }}
           macos-certificate-password: ${{ secrets.MAC_CERT_PASSWORD }}
           macos-notarize-team-id: ${{ secrets.MAC_NOTARIZE_TEAM_ID }}
