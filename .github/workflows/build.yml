@@ -38,6 +38,12 @@ jobs:
         uses: ossia/actions/package-custom-app@master
         with:
           app-name: "My Custom App"
+          app-organization: "My Organization"
+          app-domain: "example.com"
+          app-identifier: "com.example.mycustomapp"
+          app-description: "A custom application built on ossia score"
+          app-copyright: "Copyright (C) 2026 My Organization"
+          app-version: "1.0.0"
           qml-files: "qml"
           # Optional: Add your score file here
           score-file: "score/app.score"
