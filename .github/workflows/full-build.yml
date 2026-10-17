@@ -35,6 +35,7 @@ jobs:
         id: score
         uses: ossia/actions/custom-score-build@master
         with:
+          score-ref: v3.9.0
           # NB: score-addon-onnx is an Avendish addon and includes <Avnd/Factories.hpp>
           # (provided by score-plugin-avnd), so score-plugin-avnd must stay enabled.
           cmake-options: -DSCORE_ENABLE_ADDONS=score-addon-onnx -DSCORE_DISABLE_PLUGINS=score-plugin-faust,score-plugin-jit,score-plugin-vst,score-plugin-vst3,score-plugin-clap,score-plugin-lv2,score-plugin-pd,score-plugin-ysfx,score-plugin-packagemanager,score-plugin-controlsurface
@@ -52,6 +53,9 @@ jobs:
           # Optional: Add your score file here
           score-file: "score/app.score"
           score-build-id: ${{ steps.score.outputs.artifact-id }}
+          app-png: "resources/icons/app.png"
+          app-ico: "resources/icons/app.ico"
+          app-icns: "resources/icons/app.icns"
           platforms: "${{ matrix.platform }}"
           # Optional: macOS code signing (requires secrets to be set in repository)
           macos-certificate-base64: ${{ secrets.MAC_CERT_B64 }}
