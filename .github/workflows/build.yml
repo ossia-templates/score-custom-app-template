@@ -41,7 +41,10 @@ jobs:
           qml-files: "qml"
           # Optional: Add your score file here
           score-file: "score/app.score"
-          release-tag: "continuous"
+          release-tag: "v3.9.0"
+          app-png: "resources/icons/app.png"
+          app-ico: "resources/icons/app.ico"
+          app-icns: "resources/icons/app.icns"
           platforms: "${{ matrix.platform }}"
           # Optional: QRC file for custom resources
           qrc-file: "resources/resources.qrc"
